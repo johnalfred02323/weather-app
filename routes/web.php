@@ -12,6 +12,8 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/geoapify/home', [HomeController::class, 'geoIndex'])->name('geo.home');
+
 Route::get('/', [LoginController::class, 'index'])->name('login');
 
 

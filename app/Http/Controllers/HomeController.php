@@ -64,4 +64,41 @@ class HomeController extends Controller
         }
         // return Redirect::to('https://foursquare.com/oauth2/authenticate?client_id=MHBBCVJMLWUAT0U4VWYFH0C4T5WZVMJJGPFU1VZIAZAUDUEJ&response_type=code&redirect_uri=http://127.0.0.1:8000/');
     }
+
+    public function geoIndex(Request $request)
+    {
+        Cache::forget('access_token');
+        $data = [];
+        $geodata = [];
+
+        // $url = 'https://api.geoapify.com/v2/places?name=Tokyo&categories=administrative&apiKey='.env('GEOAPIFY_API_KEY');
+        if($request->has('search')) {
+            // dd($request->get('search'));
+            $url = 'https://api.geoapify.com/v1/geocode/search?city=' . $request->get('search') . '&apiKey='.env('GEOAPIFY_API_KEY');
+            $response = Http::get($url);
+
+            if($response->ok()) {
+                $json = $response['features'];
+
+                if($json) {
+                    $geodata = $json[0]['properties'];
+
+                    if ($geodata) {
+                        $weather_url = 'https://api.openweathermap.org/data/2.5/forecast?q=' . $geodata['city'] . ',' . $geodata['country_code'] . '&appId=' . env('OPENWEATHER_API_KEY') . '&units=metric';
+                        $weather_response = Http::get($weather_url);
+                        $data = $weather_response->json();
+
+                    }
+                }
+        
+
+            }
+        }
+        
+        return Inertia::render('GeoHome', [
+            'search' => $request->has('search') ? $request->get('search') : '',
+            'geodata' => $geodata ? $geodata : null,
+            'data' => array_key_exists('city', $data) ? $data : null,
+        ]);
+    }
 }

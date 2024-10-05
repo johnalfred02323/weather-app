@@ -30,6 +30,7 @@ class LoginController extends Controller
             $url = 'https://foursquare.com/oauth2/authenticate?client_id=MHBBCVJMLWUAT0U4VWYFH0C4T5WZVMJJGPFU1VZIAZAUDUEJ&response_type=code&redirect_uri=http://127.0.0.1:8000/';
             return Inertia::render('Login', [
                 'foursquare_url' => $url,
+                'geoapify_url' => route('geo.home'),
             ]);
         } else {
             return redirect()->route('home');

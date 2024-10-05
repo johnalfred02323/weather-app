@@ -5,7 +5,7 @@
         </div>
         <div class="mx-1 font-semibold">
             <div>{{ title }}</div>
-            <div>{{ data }}</div>
+            <div>{{ content }}</div>
         </div>
     </div>
 </template>
@@ -17,8 +17,8 @@ defineProps({
     icon: {
         type: String
     },
-    data: {
-        type: Array,
+    content: {
+        type: String,
     },
  });
 </script>
