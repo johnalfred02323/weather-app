@@ -1,11 +1,11 @@
 <template>
     <Head title="Weather App" />
-    <div class="flex min-h-screen">
-        <div class="w-1/2 border-2 border-gray-400 bg-blue-100 m-auto h-4/5 p-8 my-8 rounded-xl shadow-xl text-gray-800">
+    <div class="flex min-h-screen px-4 md:px-0">
+        <div class="w-full md:w-1/2 border-2 border-gray-400 bg-blue-100 m-auto h-4/5 p-8 my-8 rounded-xl shadow-xl text-gray-800">
 
             <div class="">
                 <div class="relative">
-                    <input v-model="search" type="text" class="w-96 border-gray-600 rounded-md border-2 focus:outline-none py-1 pr-2 pl-9" placeholder="Search for a city...">
+                    <input v-model="search" type="text" class="w-full md:w-96 border-gray-600 rounded-md border-2 focus:outline-none py-1 pr-2 pl-9" placeholder="Search for a city...">
                     <div class="absolute top-1 left-2">
                         <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                     </div>
@@ -21,7 +21,7 @@
                     <div class="font-semibold text-center mt-4">Timezone: {{ geodata['timezone']['offset_STD'] }}</div>
                     <div class="font-semibold text-center">County: {{ geodata['county'] }}</div>
 
-                    <div class="mt-6 flex justify-start overflow-auto py-4" >
+                    <div class="mt-6 flex justify-start overflow-x-auto py-4" >
                         <div v-for="item in props.data.list" :key="item.dt"><List :data="item" :timezone="props.data.city.timezone" /></div>
                     </div>
                 </div>

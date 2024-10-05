@@ -21,5 +21,8 @@ When designing the UI/UX, I prioritized the user needs and simplicity, following
 I implemented a two way to use the application, first I prioritize the Foursquare API and added the Geoapify API to serve as a backup if ever the first API did not work. I implemented this just to make sure that the application is usable.
 </p>
 <p>
-For the user interface, I include the details of the city that the user searched on. Aside from this, I separate all the forecast that the Openweather API  returns, so that the user can differentiate the Date and Time between forecasts. I added the forcasted weater alongside the other information like the temperature (current, minimum and maximum), real feel, humidity, wind, pressure and also a information about the rain in the last 3 hours so that the user will have the details in the forecast.
+For the user interface, I implemented the responsive design so that the user can also access the application when using a mobile phone. I also include the details of the city that the user searched on. Aside from this, I separate all the forecast that the Openweather API  returns, so that the user can differentiate the Date and Time between forecasts. I added the forcasted weater alongside the other information like the temperature (current, minimum and maximum), real feel, humidity, wind, pressure and also a information about the rain in the last 3 hours so that the user will have the details in the forecast.
+</p>
+<p>
+I am confident that this the best implementation when doing the weather application because in this application, you can find the whole forecast information that the user needs when they want to visit some cities around the world. Using the SPA architecture and responsiveness of the layout, the user can feel that they are using a mobile application.
 </p>
